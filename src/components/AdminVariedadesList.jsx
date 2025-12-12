@@ -4,7 +4,10 @@ import ModalEditarVariedad from "./ModalEditarVariedad";
 import ModalEliminar from "./ModalEliminar";
 import ModalNuevaVariedad from "./ModalNuevaVariedad";
 
+
 const AdminVariedadesList = () => {
+  const API = import.meta.env.VITE_API_URL;
+
   const { token } = useContext(AuthContext);
   const [variedades, setVariedades] = useState([]);
   const [modal, setModal] = useState(false);
@@ -17,7 +20,8 @@ const [mostrarModalEliminar, setMostrarModalEliminar] = useState(false);
   const [variedadEditando, setVariedadEditando] = useState(null);
 
   const getVariedades = async () => {
-    const resp = await fetch("http://localhost:5000/api/variedades", {
+    
+    const resp = await fetch(`${API}/api/variedades`, {
       headers: { "Authorization": `Bearer ${token}` }
     });
     const json = await resp.json();
@@ -30,7 +34,7 @@ const [mostrarModalEliminar, setMostrarModalEliminar] = useState(false);
 
 
   const eliminar = async () => {
-  await fetch(`http://localhost:5000/api/variedades/${idAEliminar}`, {
+  await fetch(`${API}/api/variedades/${idAEliminar}`, {
     method: "DELETE",
     headers: { "Authorization": `Bearer ${token}` }
   });
@@ -48,7 +52,7 @@ const [mostrarModalEliminar, setMostrarModalEliminar] = useState(false);
   };
 
   const guardarCambios = async (varActualizada) => {
-    const resp = await fetch(`http://localhost:5000/api/variedades/${varActualizada._id}`,
+    const resp = await fetch(`${API}/api/variedades/${varActualizada._id}`,
       {
         method: "PUT",
         headers: {
@@ -73,7 +77,7 @@ const [mostrarModalEliminar, setMostrarModalEliminar] = useState(false);
   };
 
     const crearVariedad = async (variedades) => {
-    const resp = await fetch("http://localhost:5000/api/variedades", {
+    const resp = await fetch(`${API}/api/variedades`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

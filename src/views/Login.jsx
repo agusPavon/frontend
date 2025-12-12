@@ -1,11 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useRef, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+const API = import.meta.env.VITE_API_URL;
 
 const Login = () => {
 
   const navigate = useNavigate();
-  const endPoint = "http://localhost:5000/api/usuarios/auth";
+  const endPoint = `${API}/api/usuarios/auth`;
 
   const emailRef = useRef();
   const passwordRef = useRef();

@@ -5,9 +5,10 @@ import Cafe from "../components/Cafe";
 import Cafes from "../components/Cafes";
 import Loading from "../components/Loading";
 import ModalEditarVariedad from "../components/ModalEditarVariedad";
+const API = import.meta.env.VITE_API_URL;
 
 const Home = () => {
-  const api = "http://localhost:5000/api/variedades";
+  const api = `{API}/api/variedades`;
   const { token } = useContext(AuthContext);
 
   const [variedades, setVariedades] = useState([]);

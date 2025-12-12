@@ -6,6 +6,8 @@ import ModalEliminar from "./ModalEliminar";
 import ModalEditarTienda from "./ModalEditarTienda";
 
 const AdminTiendas = () => {
+  const API = import.meta.env.VITE_API_URL;
+
   const { token } = useContext(AuthContext);
 
   const [tiendas, setTiendas] = useState([]);
@@ -20,7 +22,7 @@ const [mostrarModalEliminar, setMostrarModalEliminar] = useState(false);
   // GET: Obtener tiendas del backend
   // ===============================
   const fetchTiendas = async () => {
-    const resp = await fetch("http://localhost:5000/api/tiendas", {
+    const resp = await fetch(`${API}/api/tiendas`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -36,7 +38,7 @@ const [mostrarModalEliminar, setMostrarModalEliminar] = useState(false);
   // POST: Crear Tienda
   // ===============================
   const crearTienda = async (tienda) => {
-    const resp = await fetch("http://localhost:5000/api/tiendas", {
+    const resp = await fetch(`${API}/api/tiendas`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -62,7 +64,7 @@ const [mostrarModalEliminar, setMostrarModalEliminar] = useState(false);
 
   
   const eliminar = async () => {
-  await fetch(`http://localhost:5000/api/tiendas/${deleteId}`, {
+  await fetch(`${API}/api/tiendas/${deleteId}`, {
     method: "DELETE",
     headers: { "Authorization": `Bearer ${token}` }
   });
@@ -75,7 +77,7 @@ const [mostrarModalEliminar, setMostrarModalEliminar] = useState(false);
   // PUT: Editar Tienda
   // ===============================
   const editarTienda = async (tienda) => {
-    const resp = await fetch(`http://localhost:5000/api/tiendas/${editData._id}`, {
+    const resp = await fetch(`${API}/api/tiendas/${editData._id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,

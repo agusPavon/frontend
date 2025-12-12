@@ -2,6 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import TiendaCard from "../components/TiendaCard";
 
+const API = import.meta.env.VITE_API_URL;
+
+
 const Tiendas = () => {
   const { token } = useContext(AuthContext);
   const [tiendas, setTiendas] = useState([]);
@@ -9,7 +12,7 @@ const Tiendas = () => {
 
   const fetchTiendas = async () => {
     try {
-      const resp = await fetch("http://localhost:5000/api/tiendas", {
+      const resp = await fetch(`${API}/api/tiendas`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const json = await resp.json();

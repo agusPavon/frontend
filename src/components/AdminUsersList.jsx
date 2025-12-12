@@ -2,11 +2,13 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 const AdminUsersList = () => {
+  const API = import.meta.env.VITE_API_URL;
+
   const { token } = useContext(AuthContext);
   const [usuarios, setUsuarios] = useState([]);
 
   const getUsers = async () => {
-    const resp = await fetch("http://localhost:5000/api/usuarios", {
+    const resp = await fetch(`${API}/api/usuarios`, {
       headers: { "Authorization": `Bearer ${token}` }
     });
 
@@ -21,7 +23,7 @@ const AdminUsersList = () => {
   const eliminarUsuario = async (id) => {
     if (!confirm("¿Eliminar usuario?")) return;
 
-    await fetch(`http://localhost:5000/api/usuarios/${id}`, {
+    await fetch(`${API}/api/usuarios/${id}`, {
       method: "DELETE",
       headers: { "Authorization": `Bearer ${token}` }
     });
