@@ -8,7 +8,7 @@ import ModalEditarVariedad from "../components/ModalEditarVariedad";
 const API = import.meta.env.VITE_API_URL;
 
 const Home = () => {
-  const api = `{API}/api/variedades`;
+  const api = `${API}/api/variedades`;
   const { token } = useContext(AuthContext);
 
   const [variedades, setVariedades] = useState([]);
