@@ -9,6 +9,8 @@ import NotFound from './views/NotFound'
 import AdminPanel from './pages/AdminPanel'
 import AdminTiendas from './components/AdminTiendas';
 import Tiendas from './views/Tiendas';
+ import AdminRoute from "./components/AdminRoute";
+
 
 function App() {
   const usuario = 'Agus';
@@ -18,6 +20,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={ <MainLayout usuario={usuario} />}>
+                  
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminPanel />
+              </AdminRoute>
+            }
+          />
+
             <Route
               path="/"
               element={
@@ -29,7 +41,6 @@ function App() {
             <Route path='/login'  element={ <Login /> }/>
             <Route path='/register'  element={ <Register /> }/>
             <Route path='*' element={ <NotFound /> } />
-            <Route path="/admin" element={<AdminPanel />} />
             <Route path="/tiendas" element={<Tiendas />} />
 
 
