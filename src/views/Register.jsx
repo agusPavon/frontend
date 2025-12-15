@@ -24,7 +24,7 @@ const Register = () => {
     }
 const API = import.meta.env.VITE_API_URL;
 
-    const response = await fetch(`${API}api/usuarios`, {
+    const response = await fetch(`${API}/api/usuarios`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
