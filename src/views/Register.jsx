@@ -11,12 +11,17 @@ const Register = () => {
     password2: "",
   });
 
+  const [msg, setMsg] = useState(null);
+
+  
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setMsg(null);
+
 
     if (user.password1 !== user.password2) {
       alert("Las contraseñas no coinciden");
@@ -33,6 +38,14 @@ const API = import.meta.env.VITE_API_URL;
         password: user.password1,
       }),
     });
+
+     const json = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      setMsg(json.msg || "No se pudo registrar");
+      return;
+    }
+
 
     navigate("/login");
   };
@@ -56,6 +69,8 @@ const API = import.meta.env.VITE_API_URL;
           <input name="password2" type="password" value={user.password2} onChange={onChange} />
 
           <button>Registrarme</button>
+          {msg && <p style={{ color: "crimson", marginTop: "1rem" }}>{msg}</p>}
+
         </form>
 
         <div className="linkarea">
