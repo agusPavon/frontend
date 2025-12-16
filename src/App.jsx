@@ -33,14 +33,20 @@ function App() {
             <Route
               path="/"
               element={
+                <PrivateRoute>
                   <Home />
-                
+                </PrivateRoute>
               }
             />
             <Route path='/login'  element={ <Login /> }/>
             <Route path='/register'  element={ <Register /> }/>
             <Route path='*' element={ <NotFound /> } />
-            <Route path="/tiendas" element={<Tiendas />} />
+            <Route path="/tiendas" element={
+              <PrivateRoute>
+
+              <Tiendas />
+              </PrivateRoute>
+            } />
 
 
 
