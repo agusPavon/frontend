@@ -676,7 +676,7 @@ footer img {
   gap: 1rem;
 }
 
-.btn-cancel,
+
 .btn-logout {
   flex: 1;
   padding: 0.7rem;
@@ -988,16 +988,7 @@ ul li{
   margin-bottom: 1.5rem;
 }
 
-.btn-create {
-  background: #b7d3b0;
-  color: #4a4a4a;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.8rem;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
-}
+
 
 .btn-create:hover {
   background: #9ec598;
