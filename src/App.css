@@ -670,12 +670,9 @@ footer img {
 }
 
 /* Botones */
-.modal-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+.modal-buttons button {
+    margin: 2px;
 }
-
 
 .btn-logout {
   flex: 1;
@@ -932,10 +929,7 @@ ul li{
   margin-bottom: 1.5rem;
 }
 
-.modal-buttons {
-  display: flex;
-  justify-content: space-between;
-}
+
 
 .btn-cancel {
   background: #dcdcdc;
