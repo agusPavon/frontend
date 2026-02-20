@@ -35,7 +35,7 @@ const Nav = () => {
           <div className="user-info">
             {user.rol === "admin" && <NavLink to="/admin">Admin Panel</NavLink>}
             <p className="preparacion">{user.nombre}</p>
-            <div className="user-image"></div>
+            {/* <div className="user-image"></div> */}
             <button  className="btn-delete" onClick={() => setShowModal(true)}>Cerrar Sesión</button>
           </div>
         )}
